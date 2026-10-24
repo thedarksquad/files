@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>dark squad — files</title>
+<title>dark squad — файлы</title>
 <meta name="description" content="files dark squad.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -148,12 +148,43 @@
   .page-sub{
     color:#f87171;
     font-size:16.5px;
-    margin-bottom:52px;
+    margin-bottom:32px;
     font-weight:500;
   }
   .page-sub b{
     color:#fecaca;
     font-weight:700;
+  }
+
+  .tabs{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    margin-bottom:48px;
+    flex-wrap:wrap;
+  }
+  .tab-btn{
+    background:rgba(248,113,113,.05);
+    border:1px solid rgba(248,113,113,.25);
+    color:var(--muted);
+    padding:10px 24px;
+    border-radius:999px;
+    font-family:'Space Grotesk',sans-serif;
+    font-size:14px;
+    font-weight:600;
+    cursor:pointer;
+    transition:all .3s ease;
+  }
+  .tab-btn:hover{
+    color:#fff;
+    border-color:rgba(248,113,113,.6);
+    background:rgba(248,113,113,.1);
+  }
+  .tab-btn.active{
+    background:var(--grad);
+    color:#fff;
+    border-color:transparent;
+    box-shadow:0 8px 24px -8px rgba(239,68,68,.8);
   }
 
   .files-grid{
@@ -175,7 +206,7 @@
     text-decoration:none;
     color:var(--text);
     overflow:hidden;
-    transition:transform .35s cubic-bezier(.2,.8,.2,1),border-color .3s,box-shadow .3s,background .3s;
+    transition:transform .35s cubic-bezier(.2,.8,.2,1),border-color .3s,box-shadow .3s,background .3s,opacity .3s;
   }
   .file-card::before{
     content:'';position:absolute;inset:0;
@@ -251,6 +282,10 @@
   }
   .reveal.visible{opacity:1;transform:none}
 
+  .hidden{
+    display:none !important;
+  }
+
   @media (max-width:900px){
     .files-grid{grid-template-columns:repeat(2,1fr)}
   }
@@ -270,6 +305,8 @@
     .nav-links a{font-size:20px;color:#fff}
     .burger{z-index:200}
     .page{padding:130px 20px 60px}
+    .tabs{gap:8px}
+    .tab-btn{padding:8px 18px;font-size:13px}
   }
 
   @media (max-width:520px){
@@ -305,25 +342,56 @@
 
   <div class="page-inner">
     <h1 class="page-title">Файлы</h1>
-    <p class="page-sub">Пароли от раток: <b>darksquad</b></p>
+    <p class="page-sub">Пароли от файлов: <b>darksquad</b></p>
 
-    <div class="files-grid">
+    <div class="tabs">
+      <button class="tab-btn active" data-filter="all">Все</button>
+      <button class="tab-btn" data-filter="rat">Ратки</button>
+      <button class="tab-btn" data-filter="locker">Локеры</button>
+      <button class="tab-btn" data-filter="stealer">Стиллеры</button>
+    </div>
 
-      <a href="https://www.mediafire.com/file/andhpz4f1wex6la/pidorat+1.2.rar/file" target="_blank" rel="noopener" class="file-card reveal">
+    <div class="files-grid" id="filesGrid">
+
+      <a href="https://www.mediafire.com/file/andhpz4f1wex6la/pidorat+1.2.rar/file" target="_blank" rel="noopener" class="file-card reveal" data-category="rat">
         <div class="file-name">PidoRat 1.2</div>
         <div class="file-desc">Имбовая ратка</div>
         <div class="file-pass">Пароль: <span>darksquad</span></div>
       </a>
 
-      <a href="https://www.mediafire.com/file/fuksrpgkcxuhqpz/XWorm_7.4.rar/file" target="_blank" rel="noopener" class="file-card reveal">
+      <a href="https://www.mediafire.com/file/fuksrpgkcxuhqpz/XWorm_7.4.rar/file" target="_blank" rel="noopener" class="file-card reveal" data-category="rat">
         <div class="file-name">Xworm 7.4</div>
-        <div class="file-desc">Не знаю вроде норм ратка не юзал</div>
+        <div class="file-desc">Нечего сказать прикольная ратка просто</div>
         <div class="file-pass">Пароль: <span>darksquad</span></div>
       </a>
 
-      <a href="https://www.mediafire.com/file/r04fv3qk3gh7ulz/SheetRat.rar/file" target="_blank" rel="noopener" class="file-card reveal">
+      <a href="https://www.mediafire.com/file/r04fv3qk3gh7ulz/SheetRat.rar/file" target="_blank" rel="noopener" class="file-card reveal" data-category="rat">
         <div class="file-name">Sheet rat</div>
         <div class="file-desc">Норм ратка но пидорат получше будет</div>
+        <div class="file-pass">Пароль: <span>darksquad</span></div>
+      </a>
+
+      <a href="https://www.mediafire.com/file/toy4muptv6y92ya/GomoRat_2.0.rar/file" target="_blank" rel="noopener" class="file-card reveal" data-category="rat">
+        <div class="file-name">GomoRat 2.0</div>
+        <div class="file-desc">Отличный форк либериума</div>
+        <div class="file-pass">Пароль: <span>darksquad</span></div>
+      </a>
+
+      <a href="https://www.mediafire.com/file/v1xj1uap5t043ur/LibkaFixed.rar/file" target="_blank" rel="noopener" class="file-card reveal" data-category="rat">
+        <div class="file-name">Liberium Fix</div>
+        <div class="file-desc">Простая фикшеная либка тоже нечего сказать</div>
+        <div class="file-pass">Пароль: <span>darksquad</span></div>
+      </a>
+
+      <a href="https://www.mediafire.com/file/n7o3ui1y170bmf8/bluelocker.rar/file" target="_blank" rel="noopener" class="file-card reveal" data-category="locker">
+        <div class="file-name">Blue Locker</div>
+        <div class="file-desc">Прикольный локер юзать можно впринципе</div>
+        <div class="file-pass">Пароль: <span>darksquad</span></div>
+      </a>
+
+      <a href="https://www.mediafire.com/file/601zcrmgafmpaa4/intelix.rar/file" target="_blank" rel="noopener" class="file-card reveal" data-category="stealer">
+        <div class="file-name">Intelix Stealer</div>
+        <div class="file-desc">Прикольный стиллер можно юзать</div>
         <div class="file-pass">Пароль: <span>darksquad</span></div>
       </a>
 
@@ -334,6 +402,7 @@
 </main>
 
 <script>
+
   const nav = document.getElementById('nav');
   const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 40);
   onScroll();
@@ -365,7 +434,30 @@
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
 
-  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  const fileCards = document.querySelectorAll('.file-card');
+  fileCards.forEach(el => revealObserver.observe(el));
+
+  const tabBtns = document.querySelectorAll('.tab-btn');
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filterValue = btn.getAttribute('data-filter');
+
+      fileCards.forEach(card => {
+        card.classList.add('hidden');
+        
+        if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+          card.classList.remove('hidden');
+          setTimeout(() => card.classList.add('visible'), 50);
+        } else {
+          card.classList.remove('visible');
+        }
+      });
+    });
+  });
 </script>
 
 </body>
